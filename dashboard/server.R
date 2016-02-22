@@ -1,7 +1,7 @@
 library(shiny)
 #Load JSON data
-data <- fromJSON("data.json")
-
+data <- fromJSON("Data/data.json")
+options(scipen = 999)
 #Data Preprocessing
 data$current_page <- as.factor(data$current_page)
 #Finding crashes
