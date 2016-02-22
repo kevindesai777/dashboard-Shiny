@@ -13,6 +13,6 @@ library(ggplot2)
 library(jsonlite)
 library(plyr)
 #run program
-runApp("dashboard")
+runApp("dashboard", launch.browser = TRUE)
 
 
