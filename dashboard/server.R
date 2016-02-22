@@ -4,12 +4,8 @@ data <- fromJSON("data.json")
 
 #Data Preprocessing
 data$current_page <- as.factor(data$current_page)
-levels(data$current_page)
-summary(data$current_page)
-
 #Finding crashes
 crashData <- subset(data,did_aww_snap ==TRUE)
-summary(crashData)
 cd <- data.frame(pages = c(levels(crashData$current_page)),Crashed = c(summary(crashData$current_page)), Total = c(summary(data$current_page)))
 
 #indices just before crash
@@ -18,9 +14,9 @@ beforeCrash <- beforeCrash-1
 
 #summary of bytes used when page crashed
 dataBeforeCrash <- data$bytes_used[beforeCrash]
-summary(dataBeforeCrash)
-mean(dataBeforeCrash)
-sd(dataBeforeCrash)
+#summary(dataBeforeCrash)
+#mean(dataBeforeCrash)
+#sd(dataBeforeCrash)
 #around 66% of crashes were due to memory usage more than 176440486 bytes
 
 #frequency of crashes
@@ -33,8 +29,10 @@ freq <- length(which(dataBackup$did_aww_snap))/(dataBackup$timestamp[20000]/3600
 
 #avg bytes used
 avgBytes <- ddply(data,~current_page,summarise,"mean in MB"=round(mean(bytes_used/1000000), digits = 1))
-avgBytes <- t(avgBytes)
+avgBytes <- as.data.frame(t(avgBytes))
+#avgBytes <- matrix(avgBytes, ncol = ncol(avgBytes), dimnames = NULL)
 names(avgBytes) <- NULL 
+#str(avgBytes)
 #avg bytes used by each page is approx the same.
 
 #to find crashes each hour
