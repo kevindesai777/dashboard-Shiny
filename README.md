@@ -1,3 +1,10 @@
+RUNNING INSTRUCTIONS
+=======
+
+You will need to download R and RStudio. 
+Download [R](https://cran.rstudio.com/)
+Download [R Studio](https://www.rstudio.com/products/rstudio/download/)
+
 CONTEXT
 =======
 
